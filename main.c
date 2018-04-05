@@ -7,6 +7,7 @@ int main(){
     T_Incidencias *v_incidencias;
 
     int N_usuarios, N_vehiculos, N_viajes, N_pasos, N_incidencias;
+    int id_user;
 
     v_usuarios=cargar_usuarios(v_usuarios, &N_usuarios);
     v_vehiculos=cargar_vehiculos(v_vehiculos, &N_vehiculos);
@@ -14,6 +15,8 @@ int main(){
     v_pasos=cargar_pasos(v_pasos, &N_pasos);
     v_incidencias=cargar_incidencias(v_incidencias, &N_incidencias);
 
+    id_user=login(v_usuarios, N_usuarios);
+    if(id_user < 0) pantalla_err_login(v_usuarios, N_usuarios, &id_user);
 
     guardar_usuarios(v_usuarios, N_usuarios);
     guardar_vehiculos(v_vehiculos, N_vehiculos);

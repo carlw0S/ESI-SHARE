@@ -34,6 +34,20 @@ Postcondicion: Solicita al usuario del programa que introduzca un usuario y
 int login(T_Usuarios *, int );
 #endif
 
+#ifndef PANTALLA_ERR_LOGIN_H
+#define PANTALLA_ERR_LOGIN_H
+/*
+Cabecera void pantalla_login_h(T_Usuarios * usuarios, int N, int * id);
+
+Precondicion: Recibe un vector relleno de T_Usuarios, la cantida de
+      elementos de este y la id (o resultado fallido de login()) del usuario
+
+Postcondicion: Permite al usuario volver a intentar iniciar sesion, salir
+      del programa o crear un nuevo usuario.
+*/
+void pantalla_err_login(T_Usuarios *, int , int *);
+#endif
+
 /*Privada*/
 #ifndef RM_FIN_LINEA_H
 #define RM_FIN_LINEA_H
