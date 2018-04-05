@@ -1,4 +1,6 @@
 0001-Juan Perez-San Fernando-administrador-admin-jp123456-activo
 0002-Guillermo Gomez-Cadiz-usuario-usua1-gg123456-activo
 0003-Manuel Lopez-Chiclana-usuario-usua2-ml123456-activo
-0006-Raquel Ponce-Conil-usuario-usua3-ml123456-activo
+0004-Raquel Ponce-Conil-usuario-usua4-rp123456-activo
+0005-Ramon Aitor-Conil-usuario-usua3-ra123456-activo
+0006-Rafael Ferrando-Puerto Real-usuario-usua5-rf123456-activo

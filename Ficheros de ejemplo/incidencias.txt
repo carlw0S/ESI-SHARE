@@ -1,0 +1,4 @@
+000001-0004-0006-No ha pasado a recogerme-Abierta
+000001-0002-0005-Se niega a pagar-Cerrada
+000002-0005-0002-Le he pagado y ha dado gas-Validada
+000003-0004-0003-Es tan feo que me he mareado-Abierta
