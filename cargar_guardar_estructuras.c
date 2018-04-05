@@ -94,14 +94,13 @@ T_Vehiculos * cargar_vehiculos(T_Vehiculos *vehiculos, int *N){
 }
 
 T_Viajes * cargar_viajes(T_Viajes *viajes, int *N){
-  //apertura de fichero
   FILE* fichero;
   fichero = fopen("viajes.txt", "r+");
   if(fichero==NULL){
     puts("No se puede abrir el fichero");
     exit(1);
   }
-  //reserva de espacio inicial
+
   *N=contar_elementos_fichero(fichero);
   viajes=(T_Viajes *)malloc((*N)*sizeof(T_Viajes));
   if(viajes==NULL){
@@ -113,9 +112,9 @@ T_Viajes * cargar_viajes(T_Viajes *viajes, int *N){
   char auxstring[100];
   do {
     fgets(auxstring, 100, fichero);
-    puts(auxstring);
+    
     intercambiar_espacios(auxstring);
-    puts(auxstring);
+
     sscanf(auxstring, "%i %s %i %i %i %i %i %i %i %i %s %f %s"
                     , &viajes[i].Id_viaje, viajes[i].Id_mat
                     , &viajes[i].F_inic.Dia, &viajes[i].F_inic.Mes
