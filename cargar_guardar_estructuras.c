@@ -276,7 +276,7 @@ void guardar_viajes(T_Viajes *viajes, int N){
 
 void guardar_pasos(T_Pasos *pasos, int N){
   FILE * fichero;
-  fichero = fopen("viajes.txt", "w");
+  fichero = fopen("pasos.txt", "w");
   if(fichero == NULL){
     puts("Error al abrir el fichero");
     exit(1);
@@ -292,7 +292,7 @@ void guardar_pasos(T_Pasos *pasos, int N){
 
 void guardar_incidencias(T_Incidencias *incidencias, int N){
   FILE * fichero;
-  fichero = fopen("viajes.txt", "w");
+  fichero = fopen("incidencias.txt", "w");
   if(fichero == NULL){
     puts("Error al abrir el fichero");
     exit(1);
