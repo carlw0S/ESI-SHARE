@@ -7,7 +7,7 @@ es similar*/
 T_Usuarios * cargar_usuarios(T_Usuarios *usuarios, int *N){
   //apertura de fichero en lectura y escritura
   FILE* fichero;
-  fichero = fopen("usuariosd.txt", "r+");
+  fichero = fopen("usuarios.txt", "r+");
   if(fichero==NULL){
     puts("No se puede abrir el fichero");
     exit(1);
