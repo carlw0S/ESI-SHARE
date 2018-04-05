@@ -230,6 +230,8 @@ void guardar_usuarios(T_Usuarios *usuarios, int N){
   }
 
   fclose(fichero);
+
+  free(usuarios);
 }
 
 void guardar_vehiculos(T_Vehiculos *vehiculos, int N){
@@ -249,6 +251,8 @@ void guardar_vehiculos(T_Vehiculos *vehiculos, int N){
   }
 
   fclose(fichero);
+
+  free(vehiculos);
 }
 
 void guardar_viajes(T_Viajes *viajes, int N){
@@ -272,6 +276,8 @@ void guardar_viajes(T_Viajes *viajes, int N){
   }
 
   fclose(fichero);
+
+  free(viajes);
 }
 
 void guardar_pasos(T_Pasos *pasos, int N){
@@ -288,6 +294,8 @@ void guardar_pasos(T_Pasos *pasos, int N){
   }
 
   fclose(fichero);
+
+  free(pasos);
 }
 
 void guardar_incidencias(T_Incidencias *incidencias, int N){
@@ -308,6 +316,8 @@ void guardar_incidencias(T_Incidencias *incidencias, int N){
   }
 
   fclose(fichero);
+
+  free(incidencias);
 }
 
 //funcion que se usa localmente
