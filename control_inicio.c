@@ -1,39 +1,32 @@
 #include "control_inicio.h"
 
-void comprobacion_horas_viajes(T_Viajes * viajes){
-
-}
-
-//WIP, pendiente de probar
 int login(T_Usuarios * usuarios, int N){
-  char in_login[6], in_pass[9];
-  int i, salida, correcto;
+  char in_user[6], in_pass[9];
+  int i, encontrado, correcto, id;
 
-  printf("\nInicie sesion:\n");
-  printf("\nUser: ");
+  printf("Inicie sesion:\n");
+  printf("  User: ");
+  fflush(stdin);
+  fgets(in_user, 6, stdin);
+  printf("  Pass: ");
+  fflush(stdin);
+  fgets(in_pass, 9, stdin);
 
-  fgets(in_login, 6, stdin);
-  rm_fin_linea(in_login, 6);
-
-  for(i=0, salida=0, correcto=0; i<N && salida==0; i++){
-    if(strcmp(usuarios[i].User, in_login)){
-      salida = 1;
-      printf("\nPass: ");
-
-      fgets(in_pass, 9, stdin);
-      rm_fin_linea(in_pass, 9);
-
-      if(strcmp(usuarios[i].Login, in_pass)==0){
+  for(i=0, encontrado=0, correcto=0; i<N && encontrado==0; i++){
+    if(strcmp(in_user, usuarios[i].User)==0){
+      encontrado=1;
+      if(strcmp(in_pass, usuarios[i].Login)==0){
         correcto=1;
+        id=usuarios[i].Id_usuario;
       }
     }
   }
 
-  if(salida==1&&correcto==1){       //si user y pass correctos, devuelve id
-    return usuarios[i].Id_usuario;
-  }else if(salida==1&&correcto==0){ //si user encontrado y pass mal, devuelve
-    return -1;                      //-1
-  }else return -2;                  //si user no encontrado, devuelve -2
+  if(encontrado==1){
+    if(correcto==1){
+      return id;
+    }else return -1;
+  }else return -2;
 }
 
 void rm_fin_linea(char *str, int n){
