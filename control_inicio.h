@@ -48,6 +48,12 @@ Postcondicion: Permite al usuario volver a intentar iniciar sesion, salir
 void pantalla_err_login(T_Usuarios *, int , int *);
 #endif
 
+#ifndef MENU_PRINCIPAL_H
+#define MENU_PRINCIPAL_H
+
+int menu_principal(T_Usuarios *, int);
+#endif
+
 /*Privada*/
 #ifndef RM_FIN_LINEA_H
 #define RM_FIN_LINEA_H
