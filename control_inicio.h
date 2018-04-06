@@ -1,9 +1,7 @@
 #include "viajes.h"
-#include "incidencias.h"
 #include "usuarios.h"
 #include <time.h>
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 #ifndef COMPROBACION_HORAS_VIAJES_H
@@ -13,10 +11,10 @@ void comprobacion_horas_viajes(T_Viajes *);
 #endif
 
 
-#ifndef COMPROBACION_INCIDENCIAS_H
+#ifndef COMPROBACION_bloqueado_H
 #define COMPROBACION_INCIDENCIAS_H
 
-void comprobacion_incidencias(T_Incidencias *);
+void comprobacion_bloqueado(T_Usuarios *);
 #endif
 
 #ifndef LOGIN_H
@@ -51,8 +49,15 @@ void pantalla_err_login(T_Usuarios *, int , int *);
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 
-int menu_principal(T_Usuarios *, int);
+int menu_principal(T_Usuarios *, int, int);
 #endif
+
+#ifndef TITULO_H
+#define TITULO_H
+
+void titulo();
+#endif
+
 
 /*Privada*/
 #ifndef RM_FIN_LINEA_H
