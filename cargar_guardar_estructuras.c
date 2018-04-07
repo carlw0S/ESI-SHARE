@@ -4,7 +4,9 @@
 carga, voy a comentar solo cargar_usuarios() ya que el comentario de las demas
 es similar*/
 
-T_Usuarios * cargar_usuarios(T_Usuarios *usuarios, int *N){
+T_Usuarios * cargar_usuarios(int *N){
+  //declaracion del puntero
+  T_Usuarios * usuarios;
   //apertura de fichero en lectura y escritura
   FILE* fichero;
   fichero = fopen("usuarios.txt", "r+");
@@ -56,7 +58,9 @@ T_Usuarios * cargar_usuarios(T_Usuarios *usuarios, int *N){
 }
 
 
-T_Vehiculos * cargar_vehiculos(T_Vehiculos *vehiculos, int *N){
+T_Vehiculos * cargar_vehiculos(int *N){
+  T_Vehiculos * vehiculos;
+
   FILE* fichero;
   fichero = fopen("vehiculos.txt", "r+");
   if(fichero==NULL){
@@ -93,7 +97,9 @@ T_Vehiculos * cargar_vehiculos(T_Vehiculos *vehiculos, int *N){
   return vehiculos;
 }
 
-T_Viajes * cargar_viajes(T_Viajes *viajes, int *N){
+T_Viajes * cargar_viajes(int *N){
+  T_Viajes * viajes;
+
   FILE* fichero;
   fichero = fopen("viajes.txt", "r+");
   if(fichero==NULL){
@@ -112,7 +118,7 @@ T_Viajes * cargar_viajes(T_Viajes *viajes, int *N){
   char auxstring[100];
   do {
     fgets(auxstring, 100, fichero);
-    
+
     intercambiar_espacios(auxstring);
 
     sscanf(auxstring, "%i %s %i %i %i %i %i %i %i %i %s %f %s"
@@ -133,7 +139,9 @@ T_Viajes * cargar_viajes(T_Viajes *viajes, int *N){
   return viajes;
 }
 
-T_Pasos * cargar_pasos(T_Pasos *pasos, int *N){
+T_Pasos * cargar_pasos(int *N){
+  T_Pasos * pasos;
+
   FILE* fichero;
   fichero = fopen("pasos.txt", "r+");
   if(fichero==NULL){
@@ -167,7 +175,9 @@ T_Pasos * cargar_pasos(T_Pasos *pasos, int *N){
   return pasos;
 }
 
-T_Incidencias * cargar_incidencias(T_Incidencias *incidencias, int *N){
+T_Incidencias * cargar_incidencias(int *N){
+  T_Incidencias * incidencias;
+
   FILE* fichero;
   fichero = fopen("incidencias.txt", "r+");
   if(fichero==NULL){

@@ -18,7 +18,7 @@ Precondicion: recibe un puntero de T_Usuarios, la direccion del vector vacio
 Postcondicion: devuelve el vector dinamico cargado desde usuarios.txt,
         y el numero de elementos cargados esta en el puntero a entero
 */
-T_Usuarios * cargar_usuarios(T_Usuarios *, int *);
+T_Usuarios * cargar_usuarios(int *);
 #endif
 
 #ifndef CARGAR_VEHICULOS_H
@@ -32,7 +32,7 @@ Precondicion: recibe un puntero de T_Vehiculos, la direccion del vector a
 Postcondicion: devuelve el vector dinamico cargado desde vehiculos.txt,
         y el numero de elementos cargados esta en N
 */
-T_Vehiculos * cargar_vehiculos(T_Vehiculos *, int *);
+T_Vehiculos * cargar_vehiculos(int *);
 #endif
 
 #ifndef CARGAR_VIAJES_H
@@ -45,7 +45,7 @@ Precondicion: recibe un puntero de T_Viajes, la direccion del vector vacio
 Postcondicion: devuelve el vector dinamico cargado desde viajes.txt,
         y el numero de elementos cargados esta en N
 */
-T_Viajes * cargar_viajes(T_Viajes *, int *);
+T_Viajes * cargar_viajes(int *);
 #endif
 
 #ifndef CARGAR_PASOS_H
@@ -59,7 +59,7 @@ Precondicion: recibe un puntero de T_Pasos, la direccion del vector vacio
 Postcondicion: devuelve el vector dinamico cargado desde pasos.txt,
         y el numero de elementos cargados esta en N
 */
-T_Pasos * cargar_pasos(T_Pasos *, int *);
+T_Pasos * cargar_pasos(int *);
 #endif
 
 #ifndef CARGAR_INCIDENCIAS_H
@@ -73,7 +73,7 @@ Precondicion: recibe un puntero de T_Incidencias, la direccion del vector vacio
 Postcondicion: devuelve el vector dinamico cargado desde incidencias.txt,
         y el numero de elementos cargados esta en N
 */
-T_Incidencias * cargar_incidencias(T_Incidencias *, int *);
+T_Incidencias * cargar_incidencias(int *);
 #endif
 
 #ifndef GUARDAR_USUARIOS_H
