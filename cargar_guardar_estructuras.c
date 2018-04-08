@@ -4,9 +4,9 @@
 carga, voy a comentar solo cargar_usuarios() ya que el comentario de las demas
 es similar*/
 
-T_Usuarios * cargar_usuarios(int *N){
-  //declaracion del puntero
-  T_Usuarios * usuarios;
+void cargar_usuarios(T_Usuarios ** usuarios,  int *N){
+  //declaracion del puntero auxiliar
+  T_Usuarios * aux;
   //apertura de fichero en lectura y escritura
   FILE* fichero;
   fichero = fopen("usuarios.txt", "r+");
@@ -16,8 +16,8 @@ T_Usuarios * cargar_usuarios(int *N){
   }
   //reserva de espacio de tantos elementos como lineas haya en el fichero
   *N=contar_elementos_fichero(fichero);
-  usuarios=(T_Usuarios *)malloc((*N)*sizeof(T_Usuarios));
-  if(usuarios==NULL){
+  aux=(T_Usuarios *)malloc((*N)*sizeof(T_Usuarios));
+  if(aux==NULL){
     puts("Error en la reserva de memoria");
     exit(1);
   }
@@ -25,7 +25,7 @@ T_Usuarios * cargar_usuarios(int *N){
   int i=0;
   char auxstring[100];  //cadena auxiliar
   do {
-    fgets(auxstring, 100, fichero); //guardo una linea del fichero en auxstrin
+    fgets(auxstring, 100, fichero); //guardo una linea del fichero en auxstring
 
     intercambiar_espacios(auxstring); /*para que luego pueda usar sscanf de
                   manera sencilla, intercambio los guiones por espacios para que
@@ -33,33 +33,33 @@ T_Usuarios * cargar_usuarios(int *N){
                   más detalles mirar el comentario de esta funcion en concreto*/
 
     //Leo los datos de las cadenas y los guardo en sus respectivos lugares
-    sscanf(auxstring, "%i %s %s %s %s %s %s", &(usuarios[i].Id_usuario)
-                                          ,usuarios[i].Nomb_usuario
-                                          , usuarios[i].Localidad
-                                        , usuarios[i].Perfil_usuario
-                                          , usuarios[i].User, usuarios[i].Login
-                                          , usuarios[i].Estado);
+    sscanf(auxstring, "%i %s %s %s %s %s %s", &(aux[i].Id_usuario)
+                                          , aux[i].Nomb_usuario
+                                          , aux[i].Localidad
+                                          , aux[i].Perfil_usuario
+                                          , aux[i].User, aux[i].Login
+                                          , aux[i].Estado);
 
     //Vuelvo atras los cambios en los espacios realizados para usar sscanf
-    intercambiar_espacios(usuarios[i].Nomb_usuario);
-    intercambiar_espacios(usuarios[i].Localidad);
-    intercambiar_espacios(usuarios[i].Perfil_usuario);
-    intercambiar_espacios(usuarios[i].User);
-    intercambiar_espacios(usuarios[i].Login);
-    intercambiar_espacios(usuarios[i].Estado);
+    intercambiar_espacios(aux[i].Nomb_usuario);
+    intercambiar_espacios(aux[i].Localidad);
+    intercambiar_espacios(aux[i].Perfil_usuario);
+    intercambiar_espacios(aux[i].User);
+    intercambiar_espacios(aux[i].Login);
+    intercambiar_espacios(aux[i].Estado);
 
     i++;
   } while(i<*N);  //repito esta secuencia hasta que acabe el fichero
 
   fclose(fichero);  //cierro el fichero
 
-  return usuarios;  //devuelvo la direccion de memoria en la que estan todos los
-                    //datos cargados.
+  *usuarios = aux;  //Asigno la posicion de memoria del vector auxiliar a la del
+                    //vector vacio usuarios
 }
 
 
-T_Vehiculos * cargar_vehiculos(int *N){
-  T_Vehiculos * vehiculos;
+void cargar_vehiculos(T_Vehiculos ** vehiculos, int *N){
+  T_Vehiculos * aux;
 
   FILE* fichero;
   fichero = fopen("vehiculos.txt", "r+");
@@ -68,8 +68,8 @@ T_Vehiculos * cargar_vehiculos(int *N){
     exit(1);
   }
   *N=contar_elementos_fichero(fichero);
-  vehiculos=(T_Vehiculos *)malloc((*N)*sizeof(T_Vehiculos));
-  if(vehiculos==NULL){
+  aux=(T_Vehiculos *)malloc((*N)*sizeof(T_Vehiculos));
+  if(aux==NULL){
     puts("Error en la reserva de memoria");
     exit(1);
   }
@@ -81,24 +81,24 @@ T_Vehiculos * cargar_vehiculos(int *N){
 
     intercambiar_espacios(auxstring);
 
-    sscanf(auxstring, "%s %i %i %s", vehiculos[i].Id_mat
-                                    , &(vehiculos[i].Id_usuario)
-                                    ,&(vehiculos[i].Num_plazas)
-                                    , vehiculos[i].Desc_veh);
+    sscanf(auxstring, "%s %i %i %s", aux[i].Id_mat
+                                    , &(aux[i].Id_usuario)
+                                    ,&(aux[i].Num_plazas)
+                                    , aux[i].Desc_veh);
 
-    intercambiar_espacios(vehiculos[i].Id_mat);
-    intercambiar_espacios(vehiculos[i].Desc_veh);
+    intercambiar_espacios(aux[i].Id_mat);
+    intercambiar_espacios(aux[i].Desc_veh);
 
     i++;
   } while(i<*N);
 
   fclose(fichero);
 
-  return vehiculos;
+  *vehiculos = aux;
 }
 
-T_Viajes * cargar_viajes(int *N){
-  T_Viajes * viajes;
+void cargar_viajes(T_Viajes ** viajes, int *N){
+  T_Viajes * aux;
 
   FILE* fichero;
   fichero = fopen("viajes.txt", "r+");
@@ -108,8 +108,8 @@ T_Viajes * cargar_viajes(int *N){
   }
 
   *N=contar_elementos_fichero(fichero);
-  viajes=(T_Viajes *)malloc((*N)*sizeof(T_Viajes));
-  if(viajes==NULL){
+  aux=(T_Viajes *)malloc((*N)*sizeof(T_Viajes));
+  if(aux==NULL){
     puts("Error en la reserva de memoria");
     exit(1);
   }
@@ -122,25 +122,25 @@ T_Viajes * cargar_viajes(int *N){
     intercambiar_espacios(auxstring);
 
     sscanf(auxstring, "%i %s %i %i %i %i %i %i %i %i %s %f %s"
-                    , &viajes[i].Id_viaje, viajes[i].Id_mat
-                    , &viajes[i].F_inic.Dia, &viajes[i].F_inic.Mes
-                    , &viajes[i].F_inic.Ano, &viajes[i].H_inic.Hora
-                    , &viajes[i].H_inic.Minutos, &viajes[i].H_fin.Hora
-                    , &viajes[i].H_fin.Minutos, &viajes[i].Plazas_libres
-                    , viajes[i].Viaje, &viajes[i].Importe, viajes[i].Estado);
+                    , &aux[i].Id_viaje, aux[i].Id_mat
+                    , &aux[i].F_inic.Dia, &aux[i].F_inic.Mes
+                    , &aux[i].F_inic.Ano, &aux[i].H_inic.Hora
+                    , &aux[i].H_inic.Minutos, &aux[i].H_fin.Hora
+                    , &aux[i].H_fin.Minutos, &aux[i].Plazas_libres
+                    , aux[i].Viaje, &aux[i].Importe, aux[i].Estado);
 
-    intercambiar_espacios(viajes[i].Id_mat);
-    intercambiar_espacios(viajes[i].Viaje);
-    intercambiar_espacios(viajes[i].Estado);
+    intercambiar_espacios(aux[i].Id_mat);
+    intercambiar_espacios(aux[i].Viaje);
+    intercambiar_espacios(aux[i].Estado);
 
     i++;
   } while(i<*N);
 
-  return viajes;
+  *viajes = aux;
 }
 
-T_Pasos * cargar_pasos(int *N){
-  T_Pasos * pasos;
+void cargar_pasos(T_Pasos ** pasos , int *N){
+  T_Pasos * aux;
 
   FILE* fichero;
   fichero = fopen("pasos.txt", "r+");
@@ -150,8 +150,8 @@ T_Pasos * cargar_pasos(int *N){
   }
 
   *N=contar_elementos_fichero(fichero);
-  pasos=(T_Pasos *)malloc((*N)*sizeof(T_Pasos));
-  if(pasos==NULL){
+  aux=(T_Pasos *)malloc((*N)*sizeof(T_Pasos));
+  if(aux==NULL){
     puts("Error en la reserva de memoria");
     exit(1);
   }
@@ -163,20 +163,20 @@ T_Pasos * cargar_pasos(int *N){
 
     intercambiar_espacios(auxstring);
 
-    sscanf(auxstring, "%i %s", &(pasos[i].Id_viaje), pasos[i].Poblacion);
+    sscanf(auxstring, "%i %s", &(aux[i].Id_viaje), aux[i].Poblacion);
 
-    intercambiar_espacios(pasos[i].Poblacion);
+    intercambiar_espacios(aux[i].Poblacion);
 
     i++;
   } while(i<*N);
 
   fclose(fichero);
 
-  return pasos;
+  *pasos = aux;
 }
 
-T_Incidencias * cargar_incidencias(int *N){
-  T_Incidencias * incidencias;
+void cargar_incidencias(T_Incidencias ** incidencias, int *N){
+  T_Incidencias * aux;
 
   FILE* fichero;
   fichero = fopen("incidencias.txt", "r+");
@@ -186,8 +186,8 @@ T_Incidencias * cargar_incidencias(int *N){
   }
 
   *N=contar_elementos_fichero(fichero);
-  incidencias=(T_Incidencias *)malloc((*N)*sizeof(T_Incidencias));
-  if(incidencias==NULL){
+  aux=(T_Incidencias *)malloc((*N)*sizeof(T_Incidencias));
+  if(aux==NULL){
     puts("Error en la reserva de memoria");
     exit(1);
   }
@@ -199,21 +199,21 @@ T_Incidencias * cargar_incidencias(int *N){
 
     intercambiar_espacios(auxstring);
 
-    sscanf(auxstring, "%i %i %i %s %s", &(incidencias[i].Id_viaje)
-                                    , &(incidencias[i].Id_us_registra)
-                                    , &(incidencias[i].Id_us_incidencia)
-                                    , incidencias[i].Desc_incidencia
-                                    , incidencias[i].Est_incidencia);
+    sscanf(auxstring, "%i %i %i %s %s", &(aux[i].Id_viaje)
+                                    , &(aux[i].Id_us_registra)
+                                    , &(aux[i].Id_us_incidencia)
+                                    , aux[i].Desc_incidencia
+                                    , aux[i].Est_incidencia);
 
-    intercambiar_espacios(incidencias[i].Desc_incidencia);
-    intercambiar_espacios(incidencias[i].Est_incidencia);
+    intercambiar_espacios(aux[i].Desc_incidencia);
+    intercambiar_espacios(aux[i].Est_incidencia);
 
     i++;
   } while(i<*N);
 
   fclose(fichero);
 
-  return incidencias;
+  *incidencias = aux;
 }
 /*
 ####################  GUARDAR   ######################################
