@@ -10,70 +10,71 @@ el primer parametro no este inicializado. Es normal.*/
 #ifndef CARGAR_USUARIOS_H
 #define CARGAR_USUARIOS_H
 /*
-Cabecera: T_usuarios * cargar_usuarios(T_Usuarios *, int *);
+Cabecera: void cargar_usuarios(T_Usuarios **, int *);
 
-Precondicion: recibe un puntero de T_Usuarios, la direccion del vector vacio
-            y una posicion de memoria a entero
+Precondicion: recibe la direccion de memoria de un puntero de T_Usuarios, la
+            direccion del vector vacio, y una posicion de memoria a entero.
 
-Postcondicion: devuelve el vector dinamico cargado desde usuarios.txt,
-        y el numero de elementos cargados esta en el puntero a entero
+Postcondicion: carga un vector dinamico desde usuarios.txt en el vector vacio,
+            y el numero de elementos cargados esta en el puntero a entero.
 */
-T_Usuarios * cargar_usuarios(T_Usuarios *, int *);
+void cargar_usuarios(T_Usuarios **, int *);
 #endif
 
 #ifndef CARGAR_VEHICULOS_H
 #define CARGAR_VEHICULOS_H
 /*
-Cabecera: T_vehiculos * cargar_vehiculos(T_Vehiculos *, int *);
+Cabecera: void cargar_vehiculos(T_Vehiculos **, int *);
 
-Precondicion: recibe un puntero de T_Vehiculos, la direccion del vector a
-            rellenar y una posicion de memoria a entero
+Precondicion: recibe la direccion de memoria de un puntero de T_Vehiculos, la
+            direccion del vector vacio, y una posicion de memoria a entero.
 
-Postcondicion: devuelve el vector dinamico cargado desde vehiculos.txt,
-        y el numero de elementos cargados esta en N
+Postcondicion: carga un vector dinamico desde vehiculos.txt en el vector vacio,
+            y el numero de elementos cargados esta en el puntero a entero.
 */
-T_Vehiculos * cargar_vehiculos(T_Vehiculos *, int *);
+void cargar_vehiculos(T_Vehiculos **, int *);
 #endif
 
 #ifndef CARGAR_VIAJES_H
 #define CARGAR_VIAJES_H
 /*
-Cabecera: T_viajes cargar_viajes(T_Viajes *, int *);
+Cabecera: void cargar_viajes(T_Viajes **, int *);
 
-Precondicion: recibe un puntero de T_Viajes, la direccion del vector vacio
-            y una posicion de memoria a entero
-Postcondicion: devuelve el vector dinamico cargado desde viajes.txt,
-        y el numero de elementos cargados esta en N
+Precondicion: recibe la direccion de memoria de un puntero de T_Viajes, la
+            direccion del vector vacio, y una posicion de memoria a entero.
+
+Postcondicion: carga un vector dinamico desde viajes.txt en el vector vacio,
+            y el numero de elementos cargados esta en el puntero a entero.
 */
-T_Viajes * cargar_viajes(T_Viajes *, int *);
+void cargar_viajes(T_Viajes **, int *);
 #endif
 
 #ifndef CARGAR_PASOS_H
 #define CARGAR_PASOS_H
 /*
-Cabecera: T_pasos * cargar_pasos(T_Pasos *, int *);
+Cabecera: void cargar_pasos(T_Pasos **, int *);
 
-Precondicion: recibe un puntero de T_Pasos, la direccion del vector vacio
-            y una posicion de memoria a entero
+Precondicion: recibe la direccion de memoria de un puntero de T_Pasos, la
+            direccion del vector vacio, y una posicion de memoria a entero.
 
-Postcondicion: devuelve el vector dinamico cargado desde pasos.txt,
-        y el numero de elementos cargados esta en N
+Postcondicion: carga un vector dinamico desde pasos.txt en el vector vacio,
+            y el numero de elementos cargados esta en el puntero a entero.
 */
-T_Pasos * cargar_pasos(T_Pasos *, int *);
+void cargar_pasos(T_Pasos **, int *);
 #endif
 
 #ifndef CARGAR_INCIDENCIAS_H
 #define CARGAR_INCIDENCIAS_H
 /*
-Cabecera: T_incidencias * cargar_incidencias(T_Incidencias *, int *);
+Cabecera: void cargar_incidencias(T_Incidencias **, int *);
 
-Precondicion: recibe un puntero de T_Incidencias, la direccion del vector vacio
-            y una posicion de memoria a entero
+Precondicion: recibe la direccion de memoria de un puntero de T_Incidencias, la
+            direccion del vector vacio, y una posicion de memoria a entero.
 
-Postcondicion: devuelve el vector dinamico cargado desde incidencias.txt,
-        y el numero de elementos cargados esta en N
+Postcondicion: carga un vector dinamico desde incidencias.txt en el vector vacio
+            y el numero de elementos cargados esta en el puntero a entero.
 */
-T_Incidencias * cargar_incidencias(T_Incidencias *, int *);
+void cargar_incidencias(T_Incidencias **, int *);
 #endif
 
 #ifndef GUARDAR_USUARIOS_H

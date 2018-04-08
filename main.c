@@ -10,11 +10,11 @@ int main(){
     int id_user;
     int opt;
 
-    v_usuarios=cargar_usuarios(v_usuarios, &N_usuarios);
-    v_vehiculos=cargar_vehiculos(v_vehiculos, &N_vehiculos);
-    v_viajes=cargar_viajes(v_viajes, &N_viajes);
-    v_pasos=cargar_pasos(v_pasos, &N_pasos);
-    v_incidencias=cargar_incidencias(v_incidencias, &N_incidencias);
+    cargar_usuarios(&v_usuarios, &N_usuarios);
+    cargar_vehiculos(&v_vehiculos, &N_vehiculos);
+    cargar_viajes(&v_viajes, &N_viajes);
+    cargar_pasos(&v_pasos, &N_pasos);
+    cargar_incidencias(&v_incidencias, &N_incidencias);
 
     //comprobacion_horas_viajes();
 
