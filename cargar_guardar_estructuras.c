@@ -274,7 +274,7 @@ void guardar_viajes(T_Viajes *viajes, int N){
 
   int i;
   for(i=0; i<N; i++){
-    fprintf(fichero, "%.6i-%s-%.2i/%.2i/%.2i-%.2i:%.2i-%.2i:%.2i-%i-%s-%g-%s\n"
+    fprintf(fichero, "%.6i-%s-%.2i/%.2i/%i-%i:%i-%i:%i-%i-%s-%f-%s\n"
                           , viajes[i].Id_viaje, viajes[i].Id_mat
                           , viajes[i].F_inic.Dia, viajes[i].F_inic.Mes
                           , viajes[i].F_inic.Ano, viajes[i].H_inic.Hora
