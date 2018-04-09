@@ -131,11 +131,7 @@ int menu_principal(T_Usuarios * usuarios, int N, int id){
     }
   }
 
-<<<<<<< HEAD
   printf("\n\n  %s\n", usuarios[pos].Nomb_usuario)//imprimo el nombre de usuario
-=======
-  printf("\n\n  %s\n", usuarios[pos].Nomb_usuario);    //imprimo el nombre de usuario
->>>>>>> 0402874fde9dda67fb7bd501e2f1f3ea79068c73
 
   //segun sea admin o user
   if (strcmp(usuarios[pos].Perfil_usuario, "usuario")==0){
