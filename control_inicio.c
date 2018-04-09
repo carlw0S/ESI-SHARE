@@ -2,17 +2,26 @@
 
 int login(T_Usuarios * usuarios, int N){
   char in_user[6], in_pass[9];
-  int i, encontrado, correcto, id;
+  int i, encontrado, correcto, id, err=0;
 
   //pido al usuario que introduzca los datos de inicio de sesion
-  printf("Inicie sesion:\n");
-  printf("  User: ");
-  fflush(stdin);
-  fgets(in_user, 6, stdin);
-  printf("  Pass: ");
-  fflush(stdin);
-  fgets(in_pass, 9, stdin);
-
+  do{
+    err=0
+    printf("Inicie sesion:\n");
+    printf("  User: ");
+    fflush(stdin);
+    fgets(in_user, 6, stdin);
+    if(strlen(in_user)!=5) err=1;
+    printf("  Pass: ");
+    fflush(stdin);
+    fgets(in_pass, 9, stdin);
+    if(strlen(in_pass)!=8) err=1;
+    if(err==1){
+      puts("**Alguno de los datos no tienen la longitud correcta**");
+      puts("El usuario tiene 5, y la pass 8 caracteres de longitud.");
+      puts("Reintentelo, ");
+    }
+  }while(err==1)
   //recorro el vector de los usuarios
   for(i=0, encontrado=0, correcto=0; i<N && encontrado==0; i++){
     if(strcmp(in_user, usuarios[i].User)==0){     //si existe el usuario:
