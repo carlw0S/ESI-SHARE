@@ -7,17 +7,17 @@ int login(T_Usuarios * usuarios, int N){
   //pido al usuario que introduzca los datos de inicio de sesion
   do{
     err=0
-    printf("Inicie sesion:\n");
+    puts("Inicie sesion:");
     printf("  User: ");
     fflush(stdin);
     fgets(in_user, 6, stdin);
     if(strlen(in_user)!=5) err=1;
-    printf("  Pass: ");
+    puts("  Pass: ");
     fflush(stdin);
     fgets(in_pass, 9, stdin);
     if(strlen(in_pass)!=8) err=1;
     if(err==1){
-      puts("**Alguno de los datos no tienen la longitud correcta**");
+      puts("\n**Alguno de los datos no tienen la longitud correcta**");
       puts("El usuario tiene 5, y la pass 8 caracteres de longitud.");
       puts("Reintentelo, ");
     }
@@ -131,7 +131,7 @@ int menu_principal(T_Usuarios * usuarios, int N, int id){
     }
   }
 
-  printf("%s\n", usuarios[pos].Nomb_usuario);    //imprimo el nombre de usuario
+  printf("\n\n  %s\n", usuarios[pos].Nomb_usuario)//imprimo el nombre de usuario
 
   //segun sea admin o user
   if (strcmp(usuarios[pos].Perfil_usuario, "usuario")==0){
