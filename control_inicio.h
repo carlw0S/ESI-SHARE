@@ -58,6 +58,12 @@ int menu_principal(T_Usuarios *, int, int);
 void titulo();
 #endif
 
+#ifndef CHECK_USUARIO_BLOQUEADO_H
+#define CHECK_USUARIO_BLOQUEADO_H
+
+void check_usuario_bloqueado(T_Usuarios *, int, int*);
+#endif
+
 
 /*Privada*/
 #ifndef RM_FIN_LINEA_H

@@ -152,6 +152,22 @@ void titulo(){
   puts("---------------------------------");
 }
 
+void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
+  int i, f, pos;
+
+  for(i=0, f=0; i<N&&f==0; i++){
+    if (usuarios[i].Id_usuario==*id) {
+      pos=i;
+      f=1;
+    }
+  }
+
+  if(strcmp(usuarios[pos].Estado, "bloqueado")){
+    puts("**Este usuario esta bloqueado**");
+    *id = 0;
+  }
+}
+
 void rm_fin_linea(char *str, int n){
   int i, salida;
   char aux;
