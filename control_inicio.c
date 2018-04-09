@@ -165,7 +165,7 @@ void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
     }
   }
 
-  if(strcmp(usuarios[pos].Estado, "bloqueado")){   //compruebo si esta bloqueado
+  if(strcmp(usuarios[pos].Estado, "bloqueado")==0){//compruebo si esta bloqueado
     puts("**Este usuario esta bloqueado**");
     *id = 0;            //marco la id para salida si lo esta
   }
