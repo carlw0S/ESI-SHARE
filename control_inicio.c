@@ -110,42 +110,74 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
                           //este marcada para salida con un 0
 }
 
-int menu_principal(T_Usuarios * usuarios, int N, int id){
+void menu_principal(T_Usuarios * usuarios, int N, int id){
 
   int i, pos, f, o, perfil;
 
-  for(i=0, f=0; i<N&&f==0; i++){          //busco la posicion segun la id
-    if (usuarios[i].Id_usuario==id) {
-      pos=i;
-      f=1;
-    }
-  }
+  if(id > 0){   //si la id es correcta
+    do{
+      for(i=0, f=0; i<N&&f==0; i++){          //busco la posicion segun la id
+        if (usuarios[i].Id_usuario==id) {
+          pos=i;
+          f=1;
+        }
+      }
 
-  printf("\n\n  %s\n", usuarios[pos].Nomb_usuario);//imprimo Nomb_usuario
+      printf("\n\n  %s\n", usuarios[pos].Nomb_usuario);//imprimo Nomb_usuario
 
-  //segun sea admin o user
-  if (strcmp(usuarios[pos].Perfil_usuario, "usuario")==0){
-    perfil=1;                       //si es user la salida sera positiva
-    puts("\nElija una opcion: ");   //menu para user
-    puts("  1.Perfil");
-    puts("  2.Mis vehiculos");
-    puts("  3.Viajar");
-    puts("  4.Incidencias");
-    puts("  5.Salir");
-    fflush(stdin);            //tomo la opcion elegida
-    scanf("%i", &o);
-  }else{
-    perfil=-1;                      //si es admin la salida sera negativa
-    puts("\nElija una opcion: ");     //menu para admin
-    puts("  1.Usuarios");
-    puts("  2.Vehiculos");
-    puts("  3.Viajes");
-    puts("  4.Incidencias");
-    puts("  5.Salir");
-    fflush(stdin);                    //tomo la opcion elegida
-    scanf("%i", &o);
+      //segun sea admin o user
+      if (strcmp(usuarios[pos].Perfil_usuario, "usuario")==0){
+        perfil=1;                       //si es user la salida sera positiva
+        puts("\nElija una opcion: ");   //menu para user
+        puts("  1.Perfil");
+        puts("  2.Mis vehiculos");
+        puts("  3.Viajar");
+        puts("  4.Incidencias");
+        puts("  5.Salir");
+        fflush(stdin);            //tomo la opcion elegida
+        scanf("%i", &o);
+      }else{
+        perfil=-1;                      //si es admin la salida sera negativa
+        puts("\nElija una opcion: ");     //menu para admin
+        puts("  1.Usuarios");
+        puts("  2.Vehiculos");
+        puts("  3.Viajes");
+        puts("  4.Incidencias");
+        puts("  5.Salir");
+        fflush(stdin);                    //tomo la opcion elegida
+        scanf("%i", &o);
+      }
+
+      llamadas_menu(usuarios, N, id, o*perfil);
+
+      puts("  -->Ha vuelto al menu principal");
+    }while(o!=5);
   }
-  return o*perfil;            //devuelvo la opcion con el correspondiente signo
+}
+
+void llamadas_menu(T_Usuarios * usuarios, int N, int id, int opt){
+  switch (opt) {
+    case 1:   puts("perfiluser");//perfil_user();
+    break;
+    case -1:  puts("perfiladmin");//perfil_admin();
+    break;
+    case 2:   puts("vehiculosuser");//vehiculos_user();
+    break;
+    case -2:  puts("vehiculosadmin");//vehiculos_admin();
+    break;
+    case 3:   puts("viajesuser");//viajes_user();
+    break;
+    case -3:  puts("viajesadmin");//viajes_admin();
+    break;
+    case 4:   puts("incidenciasuser");//incidencias_user();
+    break;
+    case -4:  puts("incidencias_admin");//incidencias_admin();
+    break;
+    case 5: case -5:
+    break;
+    default: puts("**Esta opcion no existe**");
+    break;
+  }
 }
 
 void titulo(){

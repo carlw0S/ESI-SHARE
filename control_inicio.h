@@ -58,7 +58,13 @@ Postcondicion: imprime el menu adecuado a el usuario actual y devuelve:
       >4 para el/las incidencia(s)
       >5 para salir
 */
-int menu_principal(T_Usuarios *, int, int);
+void menu_principal(T_Usuarios *, int, int);
+#endif
+
+#ifndef LLAMADAS_MENU_H
+#define LLAMADAS_MENU_H
+
+void llamadas_menu(T_Usuarios * usuarios, int N, int id, int opt);
 #endif
 
 #ifndef TITULO_H
