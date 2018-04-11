@@ -1,4 +1,12 @@
-#include "main.h"
+#include <stdio.h>
+
+#include "usuarios.h"
+#include "vehiculos.h"
+#include "viajes.h"
+#include "incidencias.h"
+#include "cargar_guardar_estructuras.h"
+#include "control_inicio.h"
+
 int main(){
     T_Usuarios *v_usuarios;
     T_Vehiculos *v_vehiculos;
