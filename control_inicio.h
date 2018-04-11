@@ -44,26 +44,27 @@ void pantalla_err_login(T_Usuarios *, int , int *);
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 /*
-Cabecera: int menu_principal(T_Usuarios *, int N, int id);
+Cabecera: void menu_principal(T_Usuarios *, int N, int id);
 
 Precondicion: recibe un vector de T_Usuarios cargado, la cantidad de usuarios y
       la id del usuario actual.
 
-Postcondicion: imprime el menu adecuado a el usuario actual y devuelve:
-      >El signo del numero dice si es un usuario o un administrador:
-                + => usuario        - => administrador
-      >1 para el/los perfil(es)
-      >2 para el/los vehiculo(s)
-      >3 para el/los viaje(s)
-      >4 para el/las incidencia(s)
-      >5 para salir
+Postcondicion: imprime el menu adecuado a el usuario actual y llama a la funcion
+      adecuada.
 */
 void menu_principal(T_Usuarios *, int, int);
 #endif
 
 #ifndef LLAMADAS_MENU_H
 #define LLAMADAS_MENU_H
+/*
+Cabecera: void llamadas_menu(T_Usuarios *, int , int , int );
 
+Precondicion: recibe un vector de usuarios relleno, la cantidad de usuarios, la
+      id del usuario actual, y la opcion elegida en el menu principal.
+
+Postcondicion: segun la opcion actual llama a la funcion adecuada.
+*/
 void llamadas_menu(T_Usuarios * usuarios, int N, int id, int opt);
 #endif
 
