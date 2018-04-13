@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
 #include "viajes.h"
 #include "usuarios.h"
-#include <time.h>
-#include <string.h>
-#include <stdio.h>
 
 #ifndef check_HORAS_VIAJES_H
 #define check_HORAS_VIAJES_H
