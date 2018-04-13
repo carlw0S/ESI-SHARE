@@ -1,5 +1,17 @@
 #include "control_inicio.h"
 
+//DEFINICION DE FUNCIONES PRIVADAS
+
+/*Funcion privada
+Cabecera: char * rm_fin_linea(char *, int n);
+
+Precondicion: recibe una cadena de n caracteres
+
+Postcondicion: sustituye el primer caracter '\n' que encuentre por un '\0'.
+      Ademas devuelve la cadena.
+*/
+char * rm_fin_linea(char *, int );
+
 int login(T_Usuarios * usuarios, int N){
   char in_user[6], in_pass[9];
   int i, encontrado, correcto, id;

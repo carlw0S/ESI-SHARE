@@ -145,29 +145,3 @@ Postcondicion: guarda en incidencias.txt los datos del vector con un formato
 */
 void guardar_incidencias(T_Incidencias *, int);
 #endif
-
-#ifndef INTERCAMBIAR_ESPACIOS_H
-#define INTERCAMBIAR_ESPACIOS_H
-/* Funcion local
-Cabecera: void intercambiar_espacios(char *);
-
-Precondicion: Recibe una cadena de caracteres con caracter terminador
-
-Postcondicion: Intercambia los guiones de la cadena por espacios. Los espacios
-      por barras bajas y las barras bajas por espacios.
-*/
-static void intercambiar_espacios(char *);
-#endif
-
-#ifndef CONTAR_ELEMENTOS_H
-#define CONTAR_ELEMENTOS_H
-/* Funcion local
-Cabecera: int contar_elementos_fichero(FILE*);
-
-Precondicion: Recibe un fichero abierto con posibilidad de lectura
-
-Postcondicion: a partir de la posicion del fichero, devuelte el numero de saltos
-            de linea
-*/
-static int contar_elementos_fichero(FILE* );
-#endif

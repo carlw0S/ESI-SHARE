@@ -94,18 +94,3 @@ Postcondicion: Comprueba si el usuario esta bloqueado. En tal caso imprime el
 */
 void check_usuario_bloqueado(T_Usuarios *, int, int*);
 #endif
-
-
-/*Privada*/
-#ifndef RM_FIN_LINEA_H
-#define RM_FIN_LINEA_H
-/*
-Cabecera: char * rm_fin_linea(char *, int n);
-
-Precondicion: recibe una cadena de n caracteres
-
-Postcondicion: sustituye el primer caracter '\n' que encuentre por un '\0'.
-      Ademas devuelve la cadena.
-*/
-char * rm_fin_linea(char *, int );
-#endif

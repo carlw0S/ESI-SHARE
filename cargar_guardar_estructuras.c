@@ -4,6 +4,28 @@
 carga, voy a comentar solo cargar_usuarios() ya que el comentario de las demas
 es similar*/
 
+//DEFINICION DE FUNCIONES PRIVADAS
+
+/* Funcion privada
+Cabecera: void intercambiar_espacios(char *);
+
+Precondicion: Recibe una cadena de caracteres con caracter terminador
+
+Postcondicion: Intercambia los guiones de la cadena por espacios. Los espacios
+      por barras bajas y las barras bajas por espacios.
+*/
+static void intercambiar_espacios(char *);
+
+/* Funcion privada
+Cabecera: int contar_elementos_fichero(FILE*);
+
+Precondicion: Recibe un fichero abierto con posibilidad de lectura
+
+Postcondicion: a partir de la posicion del fichero, devuelte el numero de saltos
+            de linea
+*/
+static int contar_elementos_fichero(FILE* );
+
 void cargar_usuarios(T_Usuarios ** usuarios,  int *N){
   //declaracion del puntero auxiliar
   T_Usuarios * aux;
