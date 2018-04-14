@@ -2,13 +2,13 @@
 #include <string.h>
 #include <time.h>
 
-#include "viajes.h"
 #include "usuarios.h"
+#include "viajes.h"
 
-#ifndef check_HORAS_VIAJES_H
-#define check_HORAS_VIAJES_H
+#ifndef CHECK_HORAS_VIAJES_H
+#define CHECK_HORAS_VIAJES_H
 
-void check_horas_viajes(T_Viajes *);
+void check_horas_viajes(T_Viajes *, int);
 #endif
 
 #ifndef LOGIN_H

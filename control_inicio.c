@@ -214,6 +214,35 @@ void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
   }
 }
 
+void check_horas_viajes(T_Viajes * viajes, int n){
+  time_t chora, vhora;
+  int i;
+  double diferencia;
+  struct tm haux;
+
+  time(&chora);
+
+  for(i=0; i<n; i++){
+    if(strcmp(viajes[i].Estado, "abierto")==0){
+      haux.tm_sec = 0;
+      haux.tm_min = viajes[i].H_fin.Minutos;
+      haux.tm_hour = viajes[i].H_fin.Hora;
+      haux.tm_mday = viajes[i].F_inic.Dia;
+      haux.tm_mon = (viajes[i].F_inic.Mes - 1);
+      haux.tm_year = (viajes[i].F_inic.Ano - 1900);
+
+      vhora = mktime(&haux);
+
+      diferencia = difftime(chora, vhora);
+
+      if(diferencia >= 3600.0){
+        strcpy(viajes[i].Estado, "cerrado");
+      }
+    }
+  }
+
+}
+
 char * rm_fin_linea(char *str, int n){
   int i, salida;
   char aux;

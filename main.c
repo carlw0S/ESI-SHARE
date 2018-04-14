@@ -23,7 +23,7 @@ int main(){
     cargar_pasos(&v_pasos, &N_pasos);
     cargar_incidencias(&v_incidencias, &N_incidencias);
 
-    //comprobacion_horas_viajes();
+    check_horas_viajes(v_viajes, N_viajes);
 
     titulo();
 
