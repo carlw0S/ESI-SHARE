@@ -14,7 +14,7 @@ char * rm_fin_linea(char *, int );
 
 void incicio_sesion(T_Usuarios * usuarios, int N, int *id){
   *id=login(usuarios, N);
-  if(id < 0) pantalla_err_login(usuarios, N, id);
+  if(*id < 0) pantalla_err_login(usuarios, N, id);
 }
 
 int login(T_Usuarios * usuarios, int N){
@@ -49,41 +49,33 @@ int login(T_Usuarios * usuarios, int N){
 
 void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
   int o;
-  int err=1;
-  if(*id == -1){
-    while(*id < 0){ //repito mientras la id sea incorrecta (0, salida)
-      if(err < 3){
-        puts("**Pass incorrecta**");
-        puts("Que desea hacer?:");
-        printf("  1.Volver a intentarlo (%i intentos restantes)\n", 3-err);
-        puts("  2.Salir");
-        fflush(stdin);
-        scanf("%i", &o);
-        do {
-          switch(o){
-            case 1: *id=login(usuarios, N);
-            break;
-            case 2: *id=0;
-            break;
-            default: puts("**Opcion Incorrecta**");
-            break;
-          }
-        }while(o!=1&&o!=2);
-        err++;
-      }else {
-        puts("**Ha sobrepasado el limite de errores");
-        *id=0;
-      }
-    }
-  }else {
+  while(*id < 0){ //repito mientras la id sea incorrecta (0, salida)
+    if(*id == -1){
+      puts("**Pass incorrecta**");
+      do {
+      puts("Que desea hacer?:");
+      puts("  1.Volver a intentarlo");
+      puts("  2.Salir");
+      fflush(stdin);
+      scanf("%i", &o);
+        switch(o){
+          case 1: *id=login(usuarios, N);
+          break;
+          case 2: *id=0;
+          break;
+          default: puts("**Opcion Incorrecta**");
+          break;
+        }
+      }while(o!=1&&o!=2);
+    }else {
       puts("**El usuario no existe**");
+      do {
       puts("Que desea hacer?:");
       puts("  1.Volver a intentarlo");
       puts("  2.Crear un nuevo usuario");
       puts("  3.Salir");
       fflush(stdin);
       scanf("%i", &o);
-      do {
         switch (o) {
           case 1: *id=login(usuarios, N);
           break;
@@ -93,6 +85,7 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
         }
       } while(o!=1&&o!=2&&o!=3);
     }
+  }
 }
 
 void menu_principal(T_Usuarios * usuarios, int N, int id){
