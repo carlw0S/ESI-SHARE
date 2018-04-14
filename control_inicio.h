@@ -11,6 +11,12 @@
 void check_horas_viajes(T_Viajes *, int);
 #endif
 
+#ifndef INICIO_SESION_H
+#define INICIO_SESION_H
+
+void incicio_sesion(T_Usuarios *, int, int *);
+#endif
+
 #ifndef LOGIN_H
 #define LOGIN_H
 /*

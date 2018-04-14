@@ -27,8 +27,7 @@ int main(){
 
     titulo();
 
-    id_user=login(v_usuarios, N_usuarios);
-    if(id_user < 0) pantalla_err_login(v_usuarios, N_usuarios, &id_user);
+    incicio_sesion(v_usuarios, N_usuarios, &id_user);
 
     check_usuario_bloqueado(v_usuarios, N_usuarios, &id_user);
 

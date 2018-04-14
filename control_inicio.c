@@ -12,6 +12,11 @@ Postcondicion: sustituye el primer caracter '\n' que encuentre por un '\0'.
 */
 char * rm_fin_linea(char *, int );
 
+void incicio_sesion(T_Usuarios * usuarios, int N, int *id){
+  *id=login(usuarios, N);
+  if(id < 0) pantalla_err_login(usuarios, N, id);
+}
+
 int login(T_Usuarios * usuarios, int N){
   char in_user[6], in_pass[9];
   int i, encontrado, correcto, id;
@@ -35,91 +40,59 @@ int login(T_Usuarios * usuarios, int N){
     }
   }
 
-  if(encontrado==1){                 //si el usuario existe:
-    if(correcto==1){                      //si la contraseña es correcta
-      return id;                              //devuelvo la id del usuario
-    }else return -1;                      //si no, devuelvo -1
-  }else return -2;                   //si no, devuelvo -2
+  if(encontrado==1){          //si el usuario existe
+    if(correcto==1){                //si la pass es correcta
+      return id;                          //devuelvo a id
+    }else return -1;                //si no, devuelvo -1
+  }else return -2;            //si no, devuelvo -2
 }
 
 void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
   int o;
-  int err=0;
-  do {      //repito mientras la id sea incorrecta (0 marca salida del programa)
-    if (*id == -1){       //en el caso de que la contraseña sea incorrecta
-      puts("\n**PASS INCORRECTA**");
-
-      do{
-        err=0;                                //presento el menu y guardo la
-        puts("Que desea hacer?");             //opcion del usuario
-        puts("  1.Volver a intentar");
+  int err=1;
+  if(*id == -1){
+    while(*id < 0){ //repito mientras la id sea incorrecta (0, salida)
+      if(err < 3){
+        puts("**Pass incorrecta**");
+        puts("Que desea hacer?:");
+        printf("  1.Volver a intentarlo (%i intentos restantes)\n", 3-err);
         puts("  2.Salir");
-
         fflush(stdin);
         scanf("%i", &o);
-
-        switch (o) {                          //segun sea esta opcion:
-          case 1: {
-            puts("\n");
-            *id=login(usuarios, N);           //vuevlo a intentar el login
+        do {
+          switch(o){
+            case 1: *id=login(usuarios, N);
+            break;
+            case 2: *id=0;
+            break;
+            default: puts("**Opcion Incorrecta**");
+            break;
           }
-          break;
-
-          case 2: {
-            *id=0;                            //marco la id para salir
-          }
-          break;
-
-          default: {
-            err=1;                            //si lo introducido no es correcto
-            puts("**Esta opcion no existe**");
-          }
-          break;
-        }
-      }while(err==-1);   //repito esto mientras el usuario no elija algo posible
-
-    }else{puts("\n**EL USUARIO NO EXISTE**");   //si el usuario no existe:
-
-    do{
-      err=0;                                  //presento el menu
-      puts("Que desea hacer?");
-      puts("  1.Volver a intentar");
-      puts("  2.Crer un nuevo usuario");
-      puts("  3.Salir");
-
-      fflush(stdin);                          //guardo la opcion del usuario
-      scanf("%i", &o);
-
-      switch (o) {                            //segun sea la opcion:
-        case 1: {
-          puts("\n");
-          *id=login(usuarios, N);             //vuelvo a intentar el login
-        }
-        break;
-
-        case 2: {
-          puts("crearusuario");//crear_usuario();   //creo un nuevo usuario
-          puts("\n");
-          *id=login(usuarios, N);              //y vuelvo a intentar el login
-        }
-        break;
-
-        case 3: {
-          *id=0;                              //marco la id para la salida
-        }
-        break;
-
-        default: {
-          err=1;                              //si la opcion no es correcta
-          puts("**Esta opcion no existe**");
-        }
-        break;
+        }while(o!=1&&o!=2);
+        err++;
+      }else {
+        puts("**Ha sobrepasado el limite de errores");
+        *id=0;
       }
-    }while(err==1);       //repito mientras las opcion no sea correcta
-
     }
-  } while(*id < 0);       //repito todo esto mientras la id sea incorrecta y no
-                          //este marcada para salida con un 0
+  }else {
+      puts("**El usuario no existe**");
+      puts("Que desea hacer?:");
+      puts("  1.Volver a intentarlo");
+      puts("  2.Crear un nuevo usuario");
+      puts("  3.Salir");
+      fflush(stdin);
+      scanf("%i", &o);
+      do {
+        switch (o) {
+          case 1: *id=login(usuarios, N);
+          break;
+          case 2: puts("crearusuario"); //crear_usuario();
+          break;
+          default: puts("**Opcion Incorrecta**");
+        }
+      } while(o!=1&&o!=2&&o!=3);
+    }
 }
 
 void menu_principal(T_Usuarios * usuarios, int N, int id){
