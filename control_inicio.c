@@ -64,7 +64,6 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
           case 2: *id=0;
           break;
           default: puts("**Opcion Incorrecta**");
-          break;
         }
       }while(o!=1&&o!=2);
     }else {
@@ -80,6 +79,8 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
           case 1: *id=login(usuarios, N);
           break;
           case 2: puts("crearusuario"); //crear_usuario();
+          break;
+          case 3: *id=0;
           break;
           default: puts("**Opcion Incorrecta**");
         }
