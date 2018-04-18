@@ -18,17 +18,33 @@ void incicio_sesion(T_Usuarios * usuarios, int N, int *id){
 }
 
 int login(T_Usuarios * usuarios, int N){
-  char in_user[6], in_pass[9];
-  int i, encontrado, correcto, id;
+  char in_user[6], in_pass[9], aux[15];
+  int i, encontrado, correcto, id, err;
 
   //pido al usuario que introduzca los datos de inicio de sesion
-  puts("Inicie sesion:");
-  printf("  User (5 caracteres): ");
-  fflush(stdin);
-  fgets(in_user, 6, stdin);
-  printf("  Pass (8 caracteres): ");
-  fflush(stdin);
-  fgets(in_pass, 9, stdin);
+  do {
+    if(err==1){
+      puts("**User o pass demasiado largos**");
+    }
+    err=0;
+    puts("Inicie sesion:");
+    printf("  User (5 caracteres): ");
+    fflush(stdin);
+    fgets(aux, 15, stdin);
+    rm_fin_linea(aux, 15);
+    if(strlen(aux)>5){
+      err=1;
+    }else strcpy(in_user, aux);
+
+    printf("  Pass (8 caracteres): ");
+    fflush(stdin);
+    fgets(aux, 15, stdin);
+    rm_fin_linea(aux, 15);
+    if(strlen(aux)>8){
+      err=1;
+    }else strcpy(in_pass, aux);
+  } while(err==1);
+
   //recorro el vector de los usuarios
   for(i=0, encontrado=0, correcto=0; i<N && encontrado==0; i++){
     if(strcmp(in_user, usuarios[i].User)==0){     //si existe el usuario:
