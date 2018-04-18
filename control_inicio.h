@@ -129,3 +129,16 @@ Postcondicion: pide al usuario que introduzca el user y lo guarda en la primera
 */
 void introducir_credenciales(char user[6], char pass[9]);
 #endif
+
+#ifndef POS_ID_H
+#define POS_ID_H
+/*
+Cabecera: int pos_id(T_Usuarios *, int);
+
+Precondicion: recibe un vector relleno de T_Usuarios, la cantidad de
+          elemetos y una id.
+
+Postcondicion: devuelve la posicion en el vector del usuario con la id dada.
+*/
+int pos_id(T_Usuarios *, int, int);
+#endif

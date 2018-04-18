@@ -86,16 +86,11 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
 
 void menu_principal(T_Usuarios * usuarios, int N, int id){
 
-  int i, pos, f, o, perfil;
+  int pos, o, perfil;
 
   if(id > 0){   //si la id es correcta
     do{
-      for(i=0, f=0; i<N&&f==0; i++){          //busco la posicion segun la id
-        if (usuarios[i].Id_usuario==id) {
-          pos=i;
-          f=1;
-        }
-      }
+      pos=pos_id(usuarios, N, id);
 
       printf("\n\n  %s\n", usuarios[pos].Nomb_usuario);//imprimo Nomb_usuario
 
@@ -162,16 +157,13 @@ void titulo(){
 }
 
 void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
-  int i, f;
+  int pos;
 
-  for(i=0, f=0; i<N&&f==0; i++){          //encuentro la posicion segun la id
-    if (usuarios[i].Id_usuario==*id) {
-      if(strcmp(usuarios[i].Estado, "bloqueado")==0){//pruebo si esta bloqueado
-        puts("**Este usuario esta bloqueado**");
-        *id = 0;            //marco la id para salida si lo esta
-      }
-      f=1;  //marco que esta encontrado
-    }
+  pos=pos_id(usuarios, N, *id);
+
+  if(strcmp(usuarios[pos].Estado, "bloqueado")==0){//pruebo si esta bloqueado
+    puts("**Este usuario esta bloqueado**");
+    *id = 0;            //marco la id para salida si lo esta
   }
 }
 
@@ -229,6 +221,17 @@ void introducir_credenciales(char user[6], char pass[9]){
       err=1;
     }else strcpy(pass, aux);
   } while(err==1);    //mientras la longitud sea excesiva
+}
+
+int pos_id(T_Usuarios * usuarios, int n, int id){
+  int i, pos, f;
+  for(i=0, f=0; i<n&&f==0; i++){
+    if(id==usuarios[i].Id_usuario){
+      pos=i;
+      f=1;
+    }
+  }
+  return pos;
 }
 
 //PRIVADA
