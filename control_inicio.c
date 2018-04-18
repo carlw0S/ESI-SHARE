@@ -197,7 +197,7 @@ void check_horas_viajes(T_Viajes * viajes, int n){
       diferencia = difftime(chora, vhora);      //calculo la diferencia en seg
 
       if(diferencia >= 3600.0){     //si es mas de una hora:
-        strcpy(viajes[i].Estado, "cerrado");    //cierro el viaje
+        strcpy(viajes[i].Estado, "finalizado");    //finalizo el viaje
       }
     }
   }
