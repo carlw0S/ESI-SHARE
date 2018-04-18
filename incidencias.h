@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
 #ifndef T_INCIDENCIAS_H
 #define T_INCIDENCIAS_H
 typedef struct

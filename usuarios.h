@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
 #ifndef T_USUARIOS_H
 #define T_USUARIOS_H
 typedef struct T_Usuarios{

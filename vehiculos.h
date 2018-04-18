@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
 #ifndef T_VEHICULOS_H
 #define T_VEHICULOS_H
 typedef struct{

@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+#include "usuarios.h"
+#include "viajes.h"
 #include "control_inicio.h"
 
 //DEFINICION DE FUNCIONES PRIVADAS

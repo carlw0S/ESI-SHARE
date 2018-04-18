@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "usuarios.h"
-#include "vehiculos.h"
-#include "viajes.h"
-#include "incidencias.h"
 /*Existe la posibilidad de que algunas funciones de cargar den un warning porque
 el primer parametro no este inicializado. Es normal.*/
 

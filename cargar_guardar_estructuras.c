@@ -1,3 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "usuarios.h"
+#include "vehiculos.h"
+#include "viajes.h"
+#include "incidencias.h"
 #include "cargar_guardar_estructuras.h"
 
 /* Como todas las funciones cargar son casi iguales, solo que cambia lo que

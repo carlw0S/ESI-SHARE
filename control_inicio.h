@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-
-#include "usuarios.h"
-#include "viajes.h"
-
 #ifndef CHECK_HORAS_VIAJES_H
 #define CHECK_HORAS_VIAJES_H
 /*
