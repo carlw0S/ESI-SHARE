@@ -7,13 +7,27 @@
 
 #ifndef CHECK_HORAS_VIAJES_H
 #define CHECK_HORAS_VIAJES_H
+/*
+Cabecera: void check_horas_viajes(T_Viajes *, int);
 
+Precondicion: recibe un vector relleno de T_Viajes y la cantidad de viajes.
+
+Postcondicion: si algun viaje abierto ha finalizado hace mas de una hora desde
+        que se ejecuta en la funcion, lo cierra.
+*/
 void check_horas_viajes(T_Viajes *, int);
 #endif
 
 #ifndef INICIO_SESION_H
 #define INICIO_SESION_H
+/*
+Cabecera: void incicio_sesion(T_Usuarios *, int, int *);
 
+Precondicion: recibe un vector relleno de T_Usuarios, la cantidad de usuarios y
+        la posicion de memoria de la id.
+
+Postcondicion: Inicia sesion con datos solicitados al usuario
+*/
 void incicio_sesion(T_Usuarios *, int, int *);
 #endif
 
@@ -99,4 +113,19 @@ Postcondicion: Comprueba si el usuario esta bloqueado. En tal caso imprime el
       mensaje de error en la pantalla y cambia la id de usuario a 0.
 */
 void check_usuario_bloqueado(T_Usuarios *, int, int*);
+#endif
+
+#ifndef INTRODUCIR_CREDENCIALES_H
+#define INTRODUCIR_CREDENCIALES_H
+/*
+Cabecera: void introducir_credenciales(char user[6], char pass[9]);
+
+Precondicion: recibe una cadena de 6 elementos y otra de 8
+
+Postcondicion: pide al usuario que introduzca el user y lo guarda en la primera
+          cadena, y la pass y la guarda en la segunda cadena. Si la longitud de
+          alguno excede la maxima (5 char para user, 8 char para pass) da error
+          y vuelve a intentarlo.
+*/
+void introducir_credenciales(char user[6], char pass[9]);
 #endif
