@@ -19,6 +19,7 @@ Postcondicion: sustituye el primer caracter '\n' que encuentre por un '\0'.
 char * rm_fin_linea(char *, int );
 
 void incicio_sesion(T_Usuarios * usuarios, int N, int *id){
+  titulo();
   *id=login(usuarios, N);
   if(*id < 0) pantalla_err_login(usuarios, N, id);
 }
