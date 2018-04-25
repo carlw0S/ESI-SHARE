@@ -20,7 +20,7 @@ typedef struct{
   int Plazas_libres;
   char Viaje[7];
   float Importe;
-  char Estado[8];
+  char Estado[11];
 }T_Viajes;
 #endif
 
