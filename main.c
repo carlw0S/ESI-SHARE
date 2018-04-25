@@ -25,7 +25,7 @@ int main(){
 
     check_horas_viajes(v_viajes, N_viajes);
 
-    incicio_sesion(v_usuarios, N_usuarios, &id_user);
+    incicio_sesion(&v_usuarios, &N_usuarios, &id_user);
 
     check_usuario_bloqueado(v_usuarios, N_usuarios, &id_user);
 

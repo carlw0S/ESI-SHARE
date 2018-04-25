@@ -2,6 +2,8 @@
 #include <string.h>
 #include <time.h>
 
+#include <stdlib.h>
+
 #include "usuarios.h"
 #include "viajes.h"
 #include "control_inicio.h"
@@ -18,9 +20,9 @@ Postcondicion: sustituye el primer caracter '\n' que encuentre por un '\0'.
 */
 char * rm_fin_linea(char *, int );
 
-void incicio_sesion(T_Usuarios * usuarios, int N, int *id){
+void incicio_sesion(T_Usuarios ** usuarios, int *N, int *id){
   titulo();
-  *id=login(usuarios, N);
+  *id=login(*usuarios, *N);
   if(*id < 0) pantalla_err_login(usuarios, N, id);
 }
 
@@ -49,7 +51,7 @@ int login(T_Usuarios * usuarios, int N){
   }else return -2;            //si no, devuelvo -2
 }
 
-void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
+void pantalla_err_login(T_Usuarios ** usuarios, int *N, int * id){
   int o;
   while(*id < 0){ //repito mientras la id sea incorrecta (0, salida)
     if(*id == -1){      //si la contrasena es incorrecta
@@ -61,7 +63,7 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
       fflush(stdin);
       scanf("%i", &o);
         switch(o){
-          case 1: *id=login(usuarios, N);
+          case 1: *id=login(*usuarios, *N);
           break;
           case 2: *id=0;
           break;
@@ -78,9 +80,10 @@ void pantalla_err_login(T_Usuarios * usuarios, int N, int * id){
       fflush(stdin);
       scanf("%i", &o);
         switch (o) {        //segun lo que elija
-          case 1: *id=login(usuarios, N);   //relogea
+          case 1: *id=login(*usuarios, *N);   //relogea
           break;
-          case 2: puts("crearusuario"); //crear_usuario();
+          case 2: puts("crearusuario");//*id=crear_usuario(usuarios, N, "usuario");
+                  printf("id: %i tras salir\n", *id);
           break;
           case 3: *id=0;      //marco la id para salida
           break;
@@ -167,6 +170,8 @@ void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
   int pos;
 
   pos=pos_id(usuarios, N, *id);
+
+  puts("dentro de block");
 
   if(strcmp(usuarios[pos].Estado, "bloqueado")==0){//pruebo si esta bloqueado
     puts("**Este usuario esta bloqueado**");

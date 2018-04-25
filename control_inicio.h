@@ -21,7 +21,7 @@ Precondicion: recibe un vector relleno de T_Usuarios, la cantidad de usuarios y
 
 Postcondicion: Inicia sesion con datos solicitados al usuario
 */
-void incicio_sesion(T_Usuarios *, int, int *);
+void incicio_sesion(T_Usuarios **, int *, int *);
 #endif
 
 #ifndef LOGIN_H
@@ -51,7 +51,7 @@ Postcondicion: Permite al usuario volver a intentar iniciar sesion, salir
       del programa o crear un nuevo usuario. Si desea salir, la id del usuario
       valdra 0.
 */
-void pantalla_err_login(T_Usuarios *, int , int *);
+void pantalla_err_login(T_Usuarios **, int *, int *);
 #endif
 
 
