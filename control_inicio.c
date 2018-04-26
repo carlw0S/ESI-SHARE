@@ -2,8 +2,6 @@
 #include <string.h>
 #include <time.h>
 
-#include <stdlib.h>
-
 #include "usuarios.h"
 #include "viajes.h"
 #include "control_inicio.h"
@@ -169,8 +167,6 @@ void check_usuario_bloqueado(T_Usuarios * usuarios, int N, int * id){
   int pos;
 
   pos=pos_id(usuarios, N, *id);
-
-  puts("dentro de block");
 
   if(strcmp(usuarios[pos].Estado, "bloqueado")==0){//pruebo si esta bloqueado
     puts("**Este usuario esta bloqueado**");
