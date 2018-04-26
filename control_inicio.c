@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "usuarios.h"
+#include "vehiculos.h"
 #include "viajes.h"
 #include "incidencias.h"
 #include "control_inicio.h"
@@ -91,7 +92,12 @@ void pantalla_err_login(T_Usuarios ** usuarios, int *N, int * id){
   }
 }
 
-void menu_principal(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id){
+void menu_principal(T_Usuarios ** usuarios, int * N_usuarios,
+                    T_Vehiculos ** vehiculos, int * N_vehiculos,
+                    T_Viajes ** viajes, int * N_viajes,
+                    T_Pasos ** pasos, int * N_pasos,
+                    T_Incidencias ** incidencias, int * N_incidencias,
+                    int id){
 
   int pos, o, perfil;
 
@@ -125,14 +131,21 @@ void menu_principal(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** i
         fflush(stdin);                    //tomo la opcion elegida
         scanf("%i", &o);
       }
-      llamadas_menu(usuarios, N_usuarios, incidencias, N_incidencias, id, o*perfil);//funcion que llama a las demas
-                                              //del programa
+      //funcion que llama a las demas del programa
+      llamadas_menu(usuarios, N_usuarios, vehiculos, N_vehiculos,
+                    viajes, N_viajes, pasos, N_pasos,
+                    incidencias, N_incidencias, id, o*perfil);
       puts("  -->Ha vuelto al menu principal");
     }while(o!=5);
   }
 }
 
-void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id, int opt){
+void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios,
+                    T_Vehiculos ** vehiculos, int * N_vehiculos,
+                    T_Viajes ** viajes, int * N_viajes,
+                    T_Pasos ** pasos, int * N_Pasos,
+                    T_Incidencias ** incidencias, int * N_incidencias,
+                    int id, int opt){
   //si es negativo sera de admin y si es positivo de user
   switch (opt) {
     case 1:   puts("perfiluser");//perfil_user();
@@ -184,8 +197,9 @@ void check_horas_viajes(T_Viajes * viajes, int n){
   time(&chora);         //guardo el tiempo actual
 
   for(i=0; i<n; i++){     //para cada viaje:
-    if(strcmp(viajes[i].Estado, "abierto")==0){   //si esta abierto:
-      haux.tm_sec = 0;                               //relleno la estructura aux
+    if(strcmp(viajes[i].Estado, "anulado")!=0&&   //si no fue anulado y
+    strcmp(viajes[i].Estado, "finalizado")!=0){   //no esta finalizado:
+      haux.tm_sec = 0;                             //relleno la estructura haux
       haux.tm_min = viajes[i].H_fin.Minutos;
       haux.tm_hour = viajes[i].H_fin.Hora;
       haux.tm_mday = viajes[i].F_inic.Dia;

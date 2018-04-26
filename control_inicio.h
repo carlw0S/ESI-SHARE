@@ -66,7 +66,9 @@ Precondicion: recibe un vector de T_Usuarios cargado, la cantidad de usuarios y
 Postcondicion: imprime el menu adecuado a el usuario actual y llama a la funcion
       adecuada.
 */
-void menu_principal(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id);
+void menu_principal(T_Usuarios ** , int *, T_Vehiculos **, int *,
+                    T_Viajes **, int *, T_Pasos **, int *,
+                    T_Incidencias **, int *, int);
 #endif
 
 #ifndef LLAMADAS_MENU_H
@@ -79,7 +81,9 @@ Precondicion: recibe un vector de usuarios relleno, la cantidad de usuarios, la
 
 Postcondicion: segun la opcion actual llama a la funcion adecuada.
 */
-void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id, int opt);
+void llamadas_menu(T_Usuarios ** , int *, T_Vehiculos **, int *,
+                    T_Viajes **, int *, T_Pasos **, int *,
+                    T_Incidencias **, int *, int, int);
 #endif
 
 #ifndef TITULO_H
