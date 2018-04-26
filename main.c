@@ -3,7 +3,7 @@
 #include "usuarios.h"
 #include "vehiculos.h"
 #include "viajes.h"
-#include "incidencias.h"
+#include "T_incidencias.h"
 #include "cargar_guardar_estructuras.h"
 #include "control_inicio.h"
 
@@ -29,7 +29,7 @@ int main(){
 
     check_usuario_bloqueado(v_usuarios, N_usuarios, &id_user);
 
-    menu_principal(v_usuarios, N_usuarios, id_user);
+    menu_principal(&v_usuarios, &N_usuarios, &v_incidencias, &N_incidencias, id_user);
 
     guardar_usuarios(v_usuarios, N_usuarios);
     guardar_vehiculos(v_vehiculos, N_vehiculos);

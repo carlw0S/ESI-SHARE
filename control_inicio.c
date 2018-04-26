@@ -4,8 +4,8 @@
 
 #include "usuarios.h"
 #include "viajes.h"
+#include "incidencias.h"
 #include "control_inicio.h"
-
 //DEFINICION DE FUNCIONES PRIVADAS
 
 /*Funcion privada
@@ -91,18 +91,20 @@ void pantalla_err_login(T_Usuarios ** usuarios, int *N, int * id){
   }
 }
 
-void menu_principal(T_Usuarios * usuarios, int N, int id){
+void menu_principal(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id){
 
   int pos, o, perfil;
 
   if(id > 0){   //si la id es correcta
     do{
-      pos=pos_id(usuarios, N, id);
+      pos=pos_id(*usuarios, *N_usuarios, id);
 
-      printf("\n\n  %s\n", usuarios[pos].Nomb_usuario);//imprimo Nomb_usuario
+      T_Usuarios * auxusrs;
+      auxusrs = *usuarios;
+      printf("\n\n  %s\n", auxusrs[pos].Nomb_usuario);//imprimo Nomb_usuario
 
       //segun sea admin o user
-      if (strcmp(usuarios[pos].Perfil_usuario, "usuario")==0){
+      if (strcmp(auxusrs[pos].Perfil_usuario, "usuario")==0){
         perfil=1;                       //si es user la salida sera positiva
         puts("\nElija una opcion: ");   //menu para user
         puts("  1.Perfil");
@@ -123,15 +125,14 @@ void menu_principal(T_Usuarios * usuarios, int N, int id){
         fflush(stdin);                    //tomo la opcion elegida
         scanf("%i", &o);
       }
-
-      llamadas_menu(usuarios, N, id, o*perfil);//funcion que llama a las demas
+      llamadas_menu(usuarios, N_usuarios, incidencias, N_incidencias, id, o*perfil);//funcion que llama a las demas
                                               //del programa
       puts("  -->Ha vuelto al menu principal");
     }while(o!=5);
   }
 }
 
-void llamadas_menu(T_Usuarios * usuarios, int N, int id, int opt){
+void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios, T_Incidencias ** incidencias, int * N_incidencias, int id, int opt){
   //si es negativo sera de admin y si es positivo de user
   switch (opt) {
     case 1:   puts("perfiluser");//perfil_user();
@@ -146,7 +147,7 @@ void llamadas_menu(T_Usuarios * usuarios, int N, int id, int opt){
     break;
     case -3:  puts("viajesadmin");//viajes_admin();
     break;
-    case 4:   puts("incidenciasuser");//incidencias_user();
+    case 4:   puts("incidenciasuser");//incidencias_user(incidencias, N_incidencias);
     break;
     case -4:  puts("incidencias_admin");//incidencias_admin();
     break;
