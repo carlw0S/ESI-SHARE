@@ -83,7 +83,6 @@ void pantalla_err_login(T_Usuarios ** usuarios, int *N, int * id){
           case 1: *id=login(*usuarios, *N);   //relogea
           break;
           case 2: puts("crearusuario");//*id=crear_usuario(usuarios, N, "usuario");
-                  printf("id: %i tras salir\n", *id);
           break;
           case 3: *id=0;      //marco la id para salida
           break;
