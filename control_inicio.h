@@ -14,10 +14,10 @@ void check_horas_viajes(T_Viajes *, int);
 #ifndef INICIO_SESION_H
 #define INICIO_SESION_H
 /*
-Cabecera: void incicio_sesion(T_Usuarios *, int, int *);
+Cabecera: void incicio_sesion(T_Usuarios **, int *, int *);
 
-Precondicion: recibe un vector relleno de T_Usuarios, la cantidad de usuarios y
-        la posicion de memoria de la id.
+Precondicion: recibe un puntero a un vector relleno de T_Usuarios, un puntero a
+        la cantidad de usuarios y la posicion de memoria de la id.
 
 Postcondicion: Inicia sesion con datos solicitados al usuario
 */
@@ -42,10 +42,11 @@ int login(T_Usuarios *, int );
 #ifndef PANTALLA_ERR_LOGIN_H
 #define PANTALLA_ERR_LOGIN_H
 /*
-Cabecera: void pantalla_login_h(T_Usuarios * usuarios, int N, int * id);
+Cabecera: void pantalla_login_h(T_Usuarios ** usuarios, int * N, int * id);
 
-Precondicion: Recibe un vector relleno de T_Usuarios, la cantida de
-      elementos de este y la id (o resultado fallido de login()) del usuario
+Precondicion: Recibe la posicion de memoria de un vector relleno de T_Usuarios,
+      un puntero a la cantida de elementos de este y un puntero a la id
+      (o resultado fallido de login()) del usuario.
 
 Postcondicion: Permite al usuario volver a intentar iniciar sesion, salir
       del programa o crear un nuevo usuario. Si desea salir, la id del usuario
@@ -58,10 +59,12 @@ void pantalla_err_login(T_Usuarios **, int *, int *);
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 /*
-Cabecera: void menu_principal(T_Usuarios *, int N, int id);
+Cabecera: void menu_principal(T_Usuarios ** , int *, T_Vehiculos **, int *,
+                    T_Viajes **, int *, T_Pasos **, int *,
+                    T_Incidencias **, int *, int);
 
-Precondicion: recibe un vector de T_Usuarios cargado, la cantidad de usuarios y
-      la id del usuario actual.
+Precondicion: recibe punteros a vectores de las estructuras, asi como la cantidad
+      de elementos de esto y la id del usuario actual.
 
 Postcondicion: imprime el menu adecuado a el usuario actual y llama a la funcion
       adecuada.
@@ -76,8 +79,8 @@ void menu_principal(T_Usuarios ** , int *, T_Vehiculos **, int *,
 /*
 Cabecera: void llamadas_menu(T_Usuarios *, int , int , int );
 
-Precondicion: recibe un vector de usuarios relleno, la cantidad de usuarios, la
-      id del usuario actual, y la opcion elegida en el menu principal.
+Precondicion: recibe punteros a vectores de las estructuras, asi como la cantidad
+      de elementos de esto, la id del usuario actual y la opcion elegida.
 
 Postcondicion: segun la opcion actual llama a la funcion adecuada.
 */
