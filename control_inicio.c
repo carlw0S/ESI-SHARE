@@ -105,12 +105,10 @@ void menu_principal(T_Usuarios ** usuarios, int * N_usuarios,
     do{
       pos=pos_id(*usuarios, *N_usuarios, id);
 
-      T_Usuarios * auxusrs;
-      auxusrs = *usuarios;
-      printf("\n\n  %s\n", auxusrs[pos].Nomb_usuario);//imprimo Nomb_usuario
+      printf("\n\n  %s\n", (*usuarios)[pos].Nomb_usuario);//imprimo Nomb_usuario
 
       //segun sea admin o user
-      if (strcmp(auxusrs[pos].Perfil_usuario, "usuario")==0){
+      if (strcmp((*usuarios)[pos].Perfil_usuario, "usuario")==0){
         perfil=1;                       //si es user la salida sera positiva
         puts("\nElija una opcion: ");   //menu para user
         puts("  1.Perfil");
