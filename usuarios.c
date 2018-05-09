@@ -2,18 +2,9 @@
 #include <stdin.h>
 #include <string.h>
 #include <stdlib.h>
-#ifndef T_USUARIOS_H
-#define T_USUARIOS_H
-typedef struct{
-  int Id_usuario;           //Identificador de usuario
-  char Nomb_usuario[21];    //Nombre y apellido, max 20 char.
-  char Localidad[21];       //Localidad de residencia, max 20 char.
-  char Perfil_usuario[15];  //administrador o usuario
-  char User[6];             //nombre de usuarios para acceder, max 5char.
-  char Login[9];            //contrasena 8 caracteres max
-  char Estado[10];               //Estado: Activo; Bloqueado
-}T_Usuarios;
-#endif
+
+#include "cargar_guardar_estructuras.h"
+#include "control_inicio.h"
 
 void perfiles_user(T_Usuarios *usuarios, int * n) //funcion que escribe los datos del usuario
 {
@@ -22,7 +13,7 @@ void perfiles_user(T_Usuarios *usuarios, int * n) //funcion que escribe los dato
    printf("%s", &Nomb_usuario);
    printf("%s", &Localidad);
    printf("%s", &Perfil_usuario);
-   printf("¿Desea modificar su perfil? ('s' para modificar) \n"); //escriba "s" para modificar
+   printf("ï¿½Desea modificar su perfil? ('s' para modificar) \n"); //escriba "s" para modificar
    scanf("%c", &a) //lee el caracter introducido
    if(a=='S'||a=='s')
    {
@@ -32,8 +23,8 @@ void perfiles_user(T_Usuarios *usuarios, int * n) //funcion que escribe los dato
    fgets(usuarios[i].Localidad, 21, stdin); //lee la nueva localidad
    printf("modifique su nombre de usuario (max: 5 caracteres):\n"); //escribe que cambie el nombre de usuario
    fgets(usuarios[i].User, 6, stdin); //lee el nuevo nombre de usuario
-   printf("modifique su contrasena (max: 8 caracteres):\n"); //escribe que cambie la contraseña
-   fgets(usuarios[i].Login, 9, stdin); //lee la nueva contraseña
+   printf("modifique su contrasena (max: 8 caracteres):\n"); //escribe que cambie la contraseï¿½a
+   fgets(usuarios[i].Login, 9, stdin); //lee la nueva contraseï¿½a
    }
 
 }
@@ -41,7 +32,7 @@ void perfiles_user(T_Usuarios *usuarios, int * n) //funcion que escribe los dato
 void perfiles_admin(T_Usuarios *usuarios, int * n) //funcion para las opciones de administrador
 {
     int opcion;
-  printf("¿Que desea modificar?: 1)Modificar un perfil\n 2)Ver lista de usuarios\n 3)Bloquear usuario\n 4)Desbloquear usuario\n 5)Crear usuario\n 6)Eliminar usuario\n");
+  printf("ï¿½Que desea modificar?: 1)Modificar un perfil\n 2)Ver lista de usuarios\n 3)Bloquear usuario\n 4)Desbloquear usuario\n 5)Crear usuario\n 6)Eliminar usuario\n");
   scanf("%i", &opcion); //lee el numero de opcion
   switch (opcion)
   {
@@ -80,7 +71,7 @@ void mod_perfil(T_Usuarios * usuarios, int n, int id) //funcion que permite a un
    fgets(usuarios[i].Perfil_usuario, 15, stdin);
     printf("Nuevo nombre de usuario (max: 5 caracteres):");
    fgets(usuarios[i].User, 6, stdin);
-    printf("Nueva contraseña (max: 8 caracteres):");
+    printf("Nueva contraseï¿½a (max: 8 caracteres):");
    fgets(usuarios[i].Login, 9, stdin);
 }
 
@@ -108,7 +99,7 @@ int id;
  T_Usuarios * aux;
  aux = *usuarios;
   char user[6], char contrasena[9], char nombre[21], char localidad[21];
-  printf("escriba el nombre de usuario y la contraseña\n");
+  printf("escriba el nombre de usuario y la contraseï¿½a\n");
   introducir_credenciales(user, contrasena);
 
   for(i=0, max=aux[0].Id_usuario, i<n, i++)
@@ -149,5 +140,3 @@ scanf("%i", &id);
     *n-=1;
 
 }
-
-

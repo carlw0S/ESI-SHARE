@@ -1,15 +1,3 @@
- #ifndef T_INCIDENCIAS_H
- #define T_INCIDENCIAS_H
- typedef struct
- {
-   int Id_viaje; //Identificador del viaje (4 digitos)
-   int Id_us_registra; //Identificador del usuario que registra la incidencia (4 digitos)
-   int Id_us_incidencia; //Identificador del usuario sobre el que recae la incidencia (4 digitos)
-   char Desc_incidencia[101]; //Descripcion de la incidencia con 100 caracteres
-   char Est_incidencia[9]; //Estado de la incidencia (abierta, validada, cerrada)
- } T_Incidencias;
- #endif
-
 #ifndef INCIDENCAS_ADMIN_H
 #define INCIDENCAS_ADMIN_H
  //cabecera: void incidencias_admin (T_Incidencias ** incidencia, int * NI)

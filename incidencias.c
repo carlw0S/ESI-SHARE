@@ -1,8 +1,10 @@
  #include <stdio.h>
  #include <string.h>
  #include <stdlib.h>
- #include "T_Incidencias.h"
+
+ #include "cargar_guardar_estructuras.h"
  #include "usuarios.h"
+ #include "incidencias.h"
 
  //cabecera: void incidencias_admin (T_Incidencias * incidencia, int * NI)
  //precondicion: estructura incidencia inicializada

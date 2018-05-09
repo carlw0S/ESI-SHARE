@@ -1,21 +1,13 @@
 #include <stdio.h>
-#include <stdin.h>
+#include <stdlib.h>
 #include <string.h>
 
-#ifndef T_VEHICULOS_H
-#define T_VEHICULOS_H
-typedef struct{
-  char Id_mat[8];     //matricula del vehiculo
-  int Id_usuario;     //id usuario dueno vehiculo
-  int Num_plazas;     //numero de plazas disponibles, sin contar conductor
-  char Desc_veh[51];  //descripcion del vehiculo, max 50 char.
-}T_Vehiculos;
-#endif
+#include "cargar_guardar_estructuras.h"
 
 void usuario_vehiculos(T_Vehiculos *vehiculos, int *n)
 {
     int opcion;
-    printf("¿Que desea hacer? 1) Ver lista de vehiculos 2) anadir vehiculo 3) eliminar vehiculo\n");
+    printf("ï¿½Que desea hacer? 1) Ver lista de vehiculos 2) anadir vehiculo 3) eliminar vehiculo\n");
     scanf("%i", &opcion);
     switch (opcion)
     {
@@ -97,7 +89,7 @@ scanf("%i", &n);
 void administrador_vehiculos(T_Vehiculos *vehiculos, int *n)
 {
     char opcion;
-  printf("¿Que desea hacer?: 1)dar de alta\n 2)dar de baja\n 3)ver lista de vehiculos\n");
+  printf("ï¿½Que desea hacer?: 1)dar de alta\n 2)dar de baja\n 3)ver lista de vehiculos\n");
   scanf("%i", &opcion);
   switch (opcion)
   {
@@ -110,6 +102,3 @@ void administrador_vehiculos(T_Vehiculos *vehiculos, int *n)
 
   }
 }
-
-
-

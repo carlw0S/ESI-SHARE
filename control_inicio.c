@@ -158,7 +158,7 @@ void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios,
     case -2:  administrador_vehiculos(*vehiculos, N_vehiculos);
     break;
     case 3: case -3: mod_viaj(*vehiculos, *usuarios, viajes, pasos,
-                              *N_vehiculos, N_viajes, N_pasos, id);
+                              *N_usuarios, *N_vehiculos, N_viajes, N_pasos, id);
     break;
     case 4:   incidencias_user(incidencias, N_incidencias);
     break;

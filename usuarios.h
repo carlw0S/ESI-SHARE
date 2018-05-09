@@ -66,8 +66,3 @@ int crear_usuario (T_Usuarios ** usuarios,int n, char * perfil);
 //postcondicion: borra un usuario de la lista de usuarios
 void eliminar_usuario (T_Usuarios * usuarios, int *n);
 #endif
-
-
-
-
-
