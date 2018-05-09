@@ -82,8 +82,8 @@ void pantalla_err_login(T_Usuarios ** usuarios, int *N, int * id){
         switch (o) {        //segun lo que elija
           case 1: *id=login(*usuarios, *N);   //relogea
           break;
-          case 2: puts("crearusuario");//*id=crear_usuario(usuarios, N, "usuario");
-                  *id=login(*usuarios, *N);
+          case 2: *id=crear_usuario(usuarios, N, "usuario"); //crea un usuario
+                  *id=login(*usuarios, *N); //y reloguea
 
           break;
           case 3: *id=0;      //marco la id para salida
@@ -144,26 +144,25 @@ void menu_principal(T_Usuarios ** usuarios, int * N_usuarios,
 void llamadas_menu(T_Usuarios ** usuarios, int * N_usuarios,
                     T_Vehiculos ** vehiculos, int * N_vehiculos,
                     T_Viajes ** viajes, int * N_viajes,
-                    T_Pasos ** pasos, int * N_Pasos,
+                    T_Pasos ** pasos, int * N_pasos,
                     T_Incidencias ** incidencias, int * N_incidencias,
                     int id, int opt){
   //si es negativo sera de admin y si es positivo de user
   switch (opt) {
-    case 1:   puts("perfiluser");//perfil_user();
+    case 1:   perfiles_user(*usuarios, N_usuarios);
     break;
-    case -1:  puts("perfiladmin");//perfil_admin();
+    case -1:  perfiles_admin(*usuarios, N_usuarios);
     break;
-    case 2:   puts("vehiculosuser");//vehiculos_user();
+    case 2:   usuario_vehiculos(*vehiculos, N_vehiculos);
     break;
-    case -2:  puts("vehiculosadmin");//vehiculos_admin();
+    case -2:  administrador_vehiculos(*vehiculos, N_vehiculos);
     break;
-    case 3:   puts("viajesuser");//viajes_user();
+    case 3: case -3: mod_viaj(*vehiculos, *usuarios, viajes, pasos,
+                              *N_vehiculos, N_viajes, N_pasos, id);
     break;
-    case -3:  puts("viajesadmin");//viajes_admin();
+    case 4:   incidencias_user(incidencias, N_incidencias);
     break;
-    case 4:   puts("incidenciasuser");//incidencias_user(incidencias, N_incidencias);
-    break;
-    case -4:  puts("incidencias_admin");//incidencias_admin();
+    case -4:  incidencias_admin(incidencias, N_incidencias);
     break;
     case 5: case -5:
     break;
