@@ -1,6 +1,78 @@
 /*Existe la posibilidad de que algunas funciones de cargar den un warning porque
 el primer parametro no este inicializado. Es normal.*/
 
+/*Estructuras del programa:*/
+#ifndef T_USUARIOS_H
+#define T_USUARIOS_H
+typedef struct T_Usuarios{
+  int Id_usuario;           //Identificador de usuario
+  char Nomb_usuario[21];    //Nombre y apellido, max 20 char.
+  char Localidad[21];       //Localidad de residencia, max 20 char.
+  char Perfil_usuario[15];  //administrador o usuario
+  char User[6];             //nombre de usuarios para acceder, max 5char.
+  char Login[9];            //contrasena 8 caracteres max
+  char Estado[10];          //Estado: Activo; Bloqueado
+}T_Usuarios;
+#endif
+
+#ifndef T_VEHICULOS_H
+#define T_VEHICULOS_H
+typedef struct{
+  char Id_mat[8];     //matricula del vehiculo
+  int Id_usuario;     //id usuario dueno vehiculo
+  int Num_plazas;     //numero de plazas disponibles, sin contar conductor
+  char Desc_veh[51];  //descripcion del vehiculo, max 50 char.
+}T_Vehiculos;
+#endif
+
+#ifndef T_VIAJES_H
+#define T_VIAJES_H
+typedef struct{       //estructura auxiliar para almecenar fecha
+  int Dia;
+  int Mes;
+  int Ano;
+}T_Fecha;
+
+typedef struct{       //estructura auxiliar para almacenar hora
+  int Hora;
+  int Minutos;
+}T_Hora;
+
+typedef struct{
+  int Id_viaje;
+  char Id_mat[8];
+  T_Fecha F_inic;
+  T_Hora H_inic;
+  T_Hora H_fin;
+  int Plazas_libres;
+  char Viaje[7];
+  float Importe;
+  char Estado[11];
+}T_Viajes;
+#endif
+
+#ifndef T_PASOS_H
+#define T_PASOS_H
+typedef struct{
+  int Id_viaje;
+  char Poblacion[21];
+}T_Pasos;
+#endif
+
+#ifndef T_INCIDENCIAS_H
+#define T_INCIDENCIAS_H
+typedef struct
+{
+  int Id_viaje;           //Id del viaje
+  int Id_us_registra;     //Id del usuario que registra la incidecia
+  int Id_us_incidencia;   //Id del usuario sobre el que recae la incidencia
+  char Desc_incidencia[101];  //Descripcion de la incidencia, max 100 char.
+  char Est_incidencia[9]; //Estado de la incidencia (abierta, validada, cerrada)
+} T_Incidencias;
+#endif
+
+/*Funciones:*/
+
 #ifndef CARGAR_USUARIOS_H
 #define CARGAR_USUARIOS_H
 /*
